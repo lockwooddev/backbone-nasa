@@ -1,0 +1,26 @@
+{% load static from staticfiles %}
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <title>Backbone Nasa</title>
+        <meta charset="utf-8" />
+            <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0,width=device-width" />
+
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+        <script data-main="static/js/src/main" src="{% static 'js/libs/requirejs/require.js' %}"></script>
+    </head>
+    <body>
+        <nav>
+            <a href="#" class="nav-title">Backbone NASA</a>
+            <ul class="nav-items">
+                <li><a id="nav-earth" class="nav" href="#earth">Earth</a></li>
+                <li><a id="nav-apod" class="nav" href="#apod">APOD</a></li>
+            </ul>
+        </nav>
+
+        <div style="clear:both;"></div>
+
+        <div id="content"></div>
+    </body>
+</html>

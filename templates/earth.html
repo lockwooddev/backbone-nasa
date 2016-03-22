@@ -1,0 +1,47 @@
+{% load static from staticfiles %}
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <title>Backbone Nasa</title>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0,width=device-width" />
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="#" class="nav-title">Backbone NASA</a>
+        <ul class="nav-items">
+            <li class="active"><a href="#/sattelite">Earth</a></li>
+            <li><a href="#/apod">APOD</a></li>
+        </ul>
+    </nav>
+
+    <div style="clear:both;"></div>
+
+    <div id="content">
+        <h1>Locations</h1>
+
+        <p>Pick your method to look at satellite imagery on a location</p>
+
+        <div class="map-methods">
+            <button>geolocation</button>
+            <button>search</button>
+        </div>
+
+        <div id="map"></div>
+    </div>
+
+<script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+    async defer></script>
+</body>
+</html>

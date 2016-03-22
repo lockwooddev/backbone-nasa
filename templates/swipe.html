@@ -1,0 +1,71 @@
+{% load static from staticfiles %}
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <title>Backbone Nasa</title>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0,width=device-width" />
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/swiper.css' %}">
+    <script defer src="{% static 'js/libs/jquery/swiper.js' %}"></script>
+</head>
+<body>
+    <nav>
+        <a href="#" class="nav-title">Backbone NASA</a>
+        <ul class="nav-items">
+            <li class="active"><a href="#/sattelite">Earth</a></li>
+            <li><a href="#/apod">APOD</a></li>
+        </ul>
+    </nav>
+
+    <div style="clear:both;"></div>
+
+    <div id="content">
+
+        <div class="breadcrums">
+            <a href="#">Earth</a>
+            <a href="#"> Search</a>
+        </div>
+
+        <div style="clear:both;"></div>
+
+        <h1>Location: 32.7, 8.23</h1>
+
+        <p>You can swipe though the available satellite images of your selected location.</p>
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!--First Slide-->
+                <div class="swiper-slide">
+                    <div>5th May 2013</div>
+                    <img src="{% static 'img/1.png' %}"/>
+                </div>
+
+                <div class="swiper-slide">
+                    <div>12th May 2013</div>
+                    <img src="{% static 'img/2.png' %}"/>
+                </div>
+
+                <div class="swiper-slide">
+                    <div>16th June 2013</div>
+                    <img src="{% static 'img/3.png' %}"/>
+                </div>
+            </div>
+        </div>
+
+        <script>
+window.onload = function() {
+  var mySwiper = new Swiper('.swiper-container',{
+    //Your options here:
+    mode:'horizontal',
+    loop: true
+    //etc..
+  });
+}
+        </script>
+
+    <!-- end content -->
+    </div>
+</body>
+</html>

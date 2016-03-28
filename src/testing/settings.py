@@ -46,3 +46,5 @@ PASSWORD_HASHERS = (
 
 COMPRESS_ENABLED = False
 logging.disable(logging.CRITICAL)
+
+NASA_API_KEY = 'foobarkey'

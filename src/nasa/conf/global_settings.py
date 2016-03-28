@@ -17,7 +17,7 @@ DEBUG = TEMPLATE_DEBUG = False
 DEFAULT_FROM_EMAIL = SERVER_EMAIL = 'backbone-nasa@smouter.org'
 EMAIL_SUBJECT_PREFIX = os.path.basename(PROJECT_DIR)
 
-LANGUAGE_CODE = 'nl'
+LANGUAGE_CODE = 'en'
 TIME_ZONE = 'Europe/Amsterdam'
 USE_I18N = True
 USE_L10N = True
@@ -48,6 +48,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'nasa.core.middleware.ApiErrorMiddleware',
 )
 
 MEDIA_ROOT = os.path.join(ROOT_DIR, 'web', 'media')

@@ -4,6 +4,7 @@ require.config({
         underscore: '../libs/underscore/underscore',
         backbone: '../libs/backbone/backbone',
         async: '../libs/requirejs/async',
+        swiper: '../libs/swiper/swiper',
     },
 
     shim: {

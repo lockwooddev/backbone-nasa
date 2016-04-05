@@ -6,23 +6,24 @@ define([
     'underscore',
     'backbone',
     'text!templates/earthIndexTemplate.html',
-    'views/geoLocationView',
-    'views/searchLocationView',
+    'views/MapView',
     'utils/utils',
-], function($, _, Backbone, earthIndexTemplate, GeoLocationView, SearchLocationView, utils){
+    'views/SwiperView',
+], function($, _, Backbone, earthIndexTemplate, MapView, utils, SwiperView){
 
     var EarthView = Backbone.View.extend({
 
         el: $('#content'),
 
         events: {
-            'click #geolocation': 'showGeolocation',
-            'click #search': 'showSearch',
+            'click #geolocation': 'showMapView',
+            'click #search': 'showMapView',
+            'click #show-flyovers': 'showSwiperView',
         },
 
         initialize: function(){
             console.log('Load EarthView');
-            _.bindAll(this, 'render', 'handleSubView', 'showGeolocation', 'showSearch', 'close');
+            _.bindAll(this, 'render', 'handleSubView', 'showMapView', 'close');
 
             this.subviews = {}
         },
@@ -35,16 +36,17 @@ define([
         },
 
         handleSubView: function(identifier, View){
-            this.subviews[identifier] = new View();
+            this.subviews[identifier] = new View(arguments);
             this.subviews[identifier].render();
         },
 
-        showGeolocation: function(){
-            this.handleSubView('GeoLocationView', GeoLocationView);
+        showMapView: function(el){
+            var choice = $(el.currentTarget).data('choice');
+            this.handleSubView('MapView', MapView, choice);
         },
 
-        showSearch: function(){
-            this.handleSubView('SearchLocationView', SearchLocationView);
+        showSwiperView: function(){
+            this.handleSubView('SwiperView', SwiperView);
         },
 
         close: function(){

@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.decorators.cache import cache_page
 
 from nasa.core.views import IndexView, StaticTemplateView, AssetsView, ImageryView
 
@@ -8,8 +9,8 @@ from nasa.core.views import IndexView, StaticTemplateView, AssetsView, ImageryVi
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', IndexView.as_view(), name='index'),
-    url(r'^assets/$', AssetsView.as_view(), name='assets'),
-    url(r'^imagery/$', ImageryView.as_view(), name='imagery'),
+    url(r'^assets/$', cache_page(60 * 60)(AssetsView.as_view()), name='assets'),
+    url(r'^imagery/$', cache_page(60 * 60)(ImageryView.as_view()), name='imagery'),
 ]
 
 if settings.DEBUG:

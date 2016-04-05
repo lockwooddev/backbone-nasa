@@ -78,8 +78,7 @@ nav {
       padding-left: 16px;
       padding-right: 16px;
       -webkit-appearance: none; }
-    #content .map-options #toSatellite, #content .map-actions #toSatellite {
-      float: right;
+    #content .map-options #show-flyovers, #content .map-actions #show-flyovers {
       margin-top: 16px;
       margin-right: 0px;
       margin-bottom: 16px; }
@@ -97,6 +96,7 @@ nav {
     outline: none;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); }
   #content #search-input {
+    display: none;
     background-color: #fff;
     font-family: Roboto;
     font-size: 15px;
@@ -110,54 +110,6 @@ nav {
 
 #map {
   height: 300px; }
-
-.breadcrums {
-  font-size: 12px;
-  line-height: 30px; }
-  .breadcrums a {
-    color: #80808a;
-    display: block;
-    float: left;
-    background: #edeeee;
-    padding-right: 10px;
-    height: 30px;
-    margin-right: 31px;
-    position: relative;
-    text-decoration: none; }
-    .breadcrums a:before {
-      content: "";
-      display: block;
-      width: 0;
-      height: 0;
-      position: absolute;
-      top: 0;
-      left: -30px;
-      border: 15px solid transparent;
-      border-color: #edeeee;
-      border-left-color: transparent; }
-    .breadcrums a:after {
-      content: "";
-      display: block;
-      width: 0;
-      height: 0;
-      position: absolute;
-      top: 0;
-      right: -30px;
-      border: 15px solid transparent;
-      border-left-color: #edeeee; }
-    .breadcrums a:first-of-type {
-      padding-left: 15px; }
-      .breadcrums a:first-of-type:before {
-        display: none; }
-    .breadcrums a:hover {
-      background: #1a75ba;
-      color: #fff;
-      text-decoration: none; }
-      .breadcrums a:hover:before {
-        border-color: #1a75ba;
-        border-left-color: transparent; }
-      .breadcrums a:hover:after {
-        border-left-color: #1a75ba; }
 
 body {
   font-family: Arial, Helvetica, sans-serif;

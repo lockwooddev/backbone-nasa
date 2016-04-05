@@ -110,9 +110,12 @@ class TestAssetsView(object):
         assert response.status_code == 200
 
         json_response = json.loads(response.content.decode('utf-8'))
+
+        # TODO: test sorting on date key
+
         assert json_response == [
             {
-                "date": "2013-06-26T00:00:00",
+                "date": "2013-06-26",
                 "id": "LC8_L1T_TOA/LC81980232013177LGN01"
             }
         ]

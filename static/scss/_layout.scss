@@ -60,8 +60,7 @@ nav {
             -webkit-appearance: none;
         }
 
-        #toSatellite {
-            float: right;
+        #show-flyovers {
             margin-top: 16px;
             margin-right: 0px;
             margin-bottom: 16px;
@@ -86,6 +85,7 @@ nav {
     }
 
     #search-input {
+        display: none;
         background-color: #fff;
         font-family: Roboto;
         font-size: 15px;
@@ -103,69 +103,4 @@ nav {
 
 #map {
     height: 300px;
-}
-
-.breadcrums {
-    font-size: 12px;
-    line-height: 30px;
-
-    a {
-        color: #80808a;
-        display: block;
-        float: left;
-        background: #edeeee;
-        padding-right: 10px;
-        height: 30px;
-        margin-right: 31px;
-        position: relative;
-        text-decoration: none;
-
-        &:before {
-            content: "";
-            display: block;
-            width: 0;
-            height: 0;
-            position: absolute;
-            top: 0;
-            left: -30px;
-            border: 15px solid transparent;
-            border-color: #edeeee;
-            border-left-color: transparent;
-        }
-
-        &:after {
-            content: "";
-            display: block;
-            width: 0;
-            height: 0;
-            position: absolute;
-            top: 0;
-            right: -30px;
-            border: 15px solid transparent;
-            border-left-color: #edeeee;
-        }
-
-        &:first-of-type {
-            padding-left: 15px;
-
-            &:before {
-                display: none;
-            }
-        }
-
-        &:hover {
-            background: #1a75ba;
-            color: #fff;
-            text-decoration: none;
-
-            &:before {
-                border-color: #1a75ba;
-                border-left-color: transparent;
-            }
-
-            &:after {
-                border-left-color: #1a75ba;
-            }
-        }
-    }
 }

@@ -99,6 +99,7 @@ class AssetsView(ApiGetFormView):
             })
 
         formatted.sort(key=lambda k: k['date'])
+        [x.__setitem__('date', x['date'].strftime('%Y-%m-%d')) for x in formatted]
         return formatted
 
 

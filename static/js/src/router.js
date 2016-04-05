@@ -32,7 +32,6 @@ define([
 
                 var url = $(e.target).attr('href');
                 that.navigate(url, true);
-                // console.log($(e.target).attr('href'));
             });
         },
 

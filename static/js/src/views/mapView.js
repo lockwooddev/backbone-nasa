@@ -18,7 +18,7 @@ define([
 
             _.bindAll(
                 this, 'render', 'loadTemplate', 'loadMap',
-                'setPositions', 'initGeoMap', 'initSearchMap'
+                'setPositions', 'initGeoMap', 'geoSuccess', 'geoError', 'initSearchMap'
             );
         },
 
@@ -47,14 +47,18 @@ define([
         },
 
         loadMap: function(){
+            var defaultLat = 52.295627;
+            var defaultLon = 5.162350
             var map = new gmaps.Map($('#map')[0], {
                 center: {
-                    lat: 52.295627,
-                    lng: 5.162350
+                    lat: defaultLat,
+                    lng: defaultLon
                 },
                 zoom: 15,
                 disableDefaultUI: true
             });
+
+            this.setPositions(defaultLat, defaultLon);
 
             return map;
         },
@@ -65,30 +69,27 @@ define([
         },
 
         initGeoMap: function(){
-            var that = this;
-
-            // Try HTML5 geolocation.
+            // Check geolocation support.
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    // success
-                    function(position) {
-                        var pos = {
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude
-                        };
-
-                        that.map.setCenter(pos);
-                        that.setPositions(position.coords.latitude, position.coords.longitude);
-                    },
-                    // error
-                    function() {
-                        $('.map-errors').append('Your browser likely has geolocation disabled.');
-                    }
-                );
+                navigator.geolocation.getCurrentPosition(this.geoSuccess, this.geoError);
             } else {
                 // not supported
                 $('.map-errors').append("Your browser doesn't support geolocation.");
             }
+        },
+
+        geoSuccess: function(position){
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            this.map.setCenter(pos);
+            this.setPositions(position.coords.latitude, position.coords.longitude);
+        },
+
+        geoError: function(){
+            $('.map-errors').append('Your browser likely has geolocation disabled.');
         },
 
         initSearchMap: function(){

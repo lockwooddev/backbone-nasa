@@ -132,19 +132,23 @@ define([
                         scaledSize: new google.maps.Size(25, 25)
                     };
 
+                    var geometry = place.geometry;
+
                     // Create a marker for each place.
                     markers.push(new google.maps.Marker({
                         map: that.map,
                         icon: icon,
                         title: place.name,
-                        position: place.geometry.location
+                        position: geometry.location
                     }));
 
-                    if (place.geometry.viewport) {
+                    that.setPositions(geometry.location.lat(), geometry.location.lng());
+
+                    if (geometry.viewport) {
                         // Only geocodes have viewport.
-                        bounds.union(place.geometry.viewport);
+                        bounds.union(geometry.viewport);
                     } else {
-                        bounds.extend(place.geometry.location);
+                        bounds.extend(geometry.location);
                     }
                 });
                 that.map.fitBounds(bounds);
